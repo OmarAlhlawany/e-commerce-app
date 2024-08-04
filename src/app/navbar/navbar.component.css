@@ -1,0 +1,41 @@
+nav {
+  background-color: #212529;   color: white;
+  z-index: 99;
+  padding:0 30px 30px 30px;
+  border-radius:0 0 5rem 5rem ;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+nav ul:first-child {
+  justify-content: end;
+}
+
+nav ul li {
+  margin: 10px;
+  width: fit-content;
+  background-color: #353535;
+  border-radius: 10px;
+}
+nav ul:first-child li {
+  background-color: rgb(50, 110, 222);
+  margin: 10px;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+}
+
+nav ul li a:hover {
+  background-color: #555; /* Change to your preferred hover color */
+}

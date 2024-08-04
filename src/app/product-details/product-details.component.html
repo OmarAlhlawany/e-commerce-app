@@ -1,0 +1,24 @@
+<div *ngIf="product" class="product-details">
+  <div class="main-image">
+    <img [src]="product.thumbnail" alt="{{ product.title }}" />
+  </div>
+  <h1>{{ product.title }}</h1>
+  <p>{{ product.description }}</p>
+  <p>Category: {{ product.category }}</p>
+  <p>Brand: {{ product.brand }}</p>
+  <p>
+    Rating:
+    <span class="stars">
+      <span *ngFor="let _ of getStars(product.rating)" class="star filled"
+        >&#9733;</span
+      >
+      <span *ngFor="let _ of getEmptyStars(product.rating)" class="star"
+        >&#9734;</span
+      >
+    </span>
+    {{ product.rating }}
+  </p>
+
+  <button (click)="goBack()">Back to Products</button>
+  <button (click)="addToCart()">Add to Cart</button>
+</div>

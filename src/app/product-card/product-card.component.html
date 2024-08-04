@@ -1,0 +1,39 @@
+<div class="product-card">
+  <img
+    [src]="product.thumbnail"
+    alt="{{ product.title }}"
+    class="product-image"
+  />
+  <div class="product-details">
+    <h2 class="product-title">{{ product.title }}</h2>
+    <p class="product-price">Price: {{ product.price | currency }}</p>
+    <p class="product-discounted-price">
+      Discounted Price:
+      {{ product.price | discount : product.discountPercentage }}
+    </p>
+    <p class="product-rating">
+      Rating:
+      <span class="rating-stars">
+        <ng-container *ngFor="let star of getStars(product.rating)">
+          &#9733;
+        </ng-container>
+        <ng-container *ngFor="let star of getEmptyStars(product.rating)">
+          &#9734;
+        </ng-container>
+      </span>
+      <span class="rating-value">{{ product.rating }}</span>
+    </p>
+    <p
+      class="product-stock"
+      [ngStyle]="{ color: product.stock > 0 ? 'green' : 'red' }"
+    >
+      {{ product.stock > 0 ? "In Stock" : "Out of Stock" }}
+    </p>
+    <div class="product-actions">
+      <button [routerLink]="['/product', product.id]" class="details-button">
+        View Details
+      </button>
+      <button (click)="addToCart()" class="cart-button">Add to Cart</button>
+    </div>
+  </div>
+</div>

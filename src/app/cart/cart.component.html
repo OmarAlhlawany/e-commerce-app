@@ -1,0 +1,29 @@
+<h1>Your Cart</h1>
+<ul>
+  <li *ngFor="let item of cartItems">
+    <div class="cart-item">
+      <img
+        [src]="item.thumbnail"
+        alt="{{ item.name }}"
+        class="cart-item-image"
+      />
+      <div class="cart-item-details">
+        <h2>{{ item.name }}</h2>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>
+          Quantity:
+          <input
+            type="number"
+            [(ngModel)]="item.quantity"
+            (change)="updateQuantity(item, item.quantity ?? 1)"
+          />
+        </p>
+        <p>Total: {{ item.price * (item.quantity ?? 1) | currency }}</p>
+        <button (click)="removeItem(item)">Remove</button>
+      </div>
+    </div>
+  </li>
+  <div class="cart-total">
+    <h3>Total Price: {{ getTotalPrice() | currency }}</h3>
+  </div>
+</ul>

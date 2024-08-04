@@ -1,0 +1,45 @@
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #212529;
+  margin: 3rem;
+  color: #ddd;
+  border-radius: 25px;
+}
+
+.main-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.stars {
+  font-size: 1.5em;
+  color: gold;
+}
+
+.star {
+  color: #ddd; /* Light color for empty stars */
+}
+
+.star.filled {
+  color: gold; /* Golden color for filled stars */
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
