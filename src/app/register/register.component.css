@@ -1,11 +1,90 @@
+/* General Form Styling */
 .register-form {
-  margin: 100px;
+  max-width: 70vb;
+  margin: auto;
   padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  animation: fadeIn 1s ease-in-out;
+  min-height: 40vh;
+  padding: 70px;
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #212529;
   color: #fff;
+  
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+}
+
+.register-form .form-group {
+  margin-bottom: 20px;
+}
+
+.register-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-family: "Roboto", sans-serif;
+  color: #555;
+}
+
+.register-form input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+}
+
+.register-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.register-form small {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+/* Register Button Styling */
+.register-form button.register-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-form button.register-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.register-form button.register-btn:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
 }
 
 .register-form input {

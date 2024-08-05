@@ -43,3 +43,14 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.image-slider {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.image-slider img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}

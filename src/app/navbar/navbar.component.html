@@ -1,12 +1,19 @@
 <nav>
   <ul>
-    <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
-    <li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/login" routerLinkActive="active-link">Login</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
       <a routerLink="/register" routerLinkActive="active-link">Register</a>
     </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/profile" routerLinkActive="active-link">Profile</a>
+    </li>
+    <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
   </ul>
   <ul>
     <li><a routerLink="/" routerLinkActive="active-link">Products</a></li>
+    <li *ngIf="!isLoggedIn">
     <li><a routerLink="/cart" routerLinkActive="active-link">Cart</a></li>
   </ul>
 </nav>

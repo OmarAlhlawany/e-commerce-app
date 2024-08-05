@@ -1,0 +1,21 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info {
+    font-size: 18px;
+  }
+  
+  .profile-info p {
+    margin: 10px 0;
+  }
+  
+  .profile-info strong {
+    color: #333;
+  }

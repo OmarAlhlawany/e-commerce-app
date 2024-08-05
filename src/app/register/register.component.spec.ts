@@ -1,23 +1,61 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { RegisterComponent } from './register.component';
+@Component({
+  selector: 'app-register',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.pattern(/^\S*$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+      ]],
+       confirmPassword: ['', Validators.required]
+        }, { validators: this.passwordMatchValidator });
+  }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RegisterComponent]
-    })
-    .compileComponents();
+  ngOnInit() {
+    this.registerForm.get('password')?.valueChanges.subscribe(() => {
+      this.registerForm.get('confirmPassword')?.updateValueAndValidity();
+    });
 
-    fixture = TestBed.createComponent(RegisterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    this.registerForm.get('confirmPassword')?.valueChanges.subscribe(() => {
+      this.registerForm.get('confirmPassword')?.updateValueAndValidity();
+    });
+  }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('password')?.value === g.get('confirmPassword')?.value
+      ? null : { 'mustMatch': true };
+  }
+
+  register() {
+    if (this.registerForm.valid) {
+      const { username, email, password } = this.registerForm.value;
+
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      users.push({ username, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      localStorage.setItem('loggedInUser', JSON.stringify({ username, email }));
+
+      this.router.navigate(['/profile']);
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+}

@@ -1,6 +1,38 @@
-<div class="login-form">
+<!-- <div class="login-form">
   <h2>Login</h2>
   <input type="text" [(ngModel)]="username" placeholder="Username" />
   <input type="password" [(ngModel)]="password" placeholder="Password" />
   <button (click)="login()">Login</button>
+</div> -->
+<div class="login-form" [formGroup]="loginForm">
+  <h2>Login</h2>
+  <div class="form-group">
+    
+    <input type="email" formControlName="email" placeholder="Email Address" />
+  </div>
+  <div
+    *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+  >
+    <small *ngIf="loginForm.get('email')?.errors?.['required']">
+      Email is required.
+    </small>
+    <small *ngIf="loginForm.get('email')?.errors?.['pattern']">
+      Invalid email format.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <input type="password" formControlName="password" placeholder="Password" />
+  </div>
+  <div
+    *ngIf="
+      loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+    "
+  >
+    <small>Password is required.</small>
+  </div>
+
+  <button (click)="login()" [disabled]="loginForm.invalid">
+    <i class="fas fa-sign-in-alt"></i> Login
+  </button>
 </div>

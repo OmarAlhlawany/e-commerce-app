@@ -1,6 +1,8 @@
+
 .login-form {
+  min-height: 40vh;
   margin: 100px;
-  padding: 20px;
+  padding: 70px;
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

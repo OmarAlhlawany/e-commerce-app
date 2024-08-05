@@ -3,6 +3,7 @@ nav {
   z-index: 99;
   padding:0 30px 30px 30px;
   border-radius:0 0 5rem 5rem ;
+  bottom: 100rv;
 }
 
 nav ul {
@@ -22,12 +23,12 @@ nav ul li {
   background-color: #353535;
   border-radius: 10px;
 }
-nav ul:first-child li {
+/* nav ul:first-child li {
   background-color: rgb(50, 110, 222);
   margin: 10px;
   width: fit-content;
   border-radius: 10px;
-}
+} */
 
 nav ul li a {
   color: white;
